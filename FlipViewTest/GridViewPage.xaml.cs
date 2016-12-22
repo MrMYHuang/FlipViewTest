@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -10,10 +11,14 @@ namespace FlipViewTest
     /// </summary>
     public sealed partial class GridViewPage : Page
     {
-        public GridViewPage(List<string> strs)
+        ObservableCollection<string> strs = new ObservableCollection<string>();
+        public GridViewPage(ObservableCollection<string> _strs)
         {
             this.InitializeComponent();
-            gv.ItemsSource = strs;
+            foreach(var s in _strs)
+            {
+                strs.Add(s);
+            }
         }
     }
 }

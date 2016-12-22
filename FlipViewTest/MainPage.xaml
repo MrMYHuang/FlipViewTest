@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <FlipView ItemsSource="{x:Bind gvps}">
+        <FlipView ItemsSource="{x:Bind gvps, Mode=OneWay}">
         </FlipView>
     </Grid>
 </Page>

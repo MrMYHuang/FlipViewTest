@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -10,13 +12,20 @@ namespace FlipViewTest
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        List<GridViewPage> gvps = new List<GridViewPage>();
+        ObservableCollection<GridViewPage> gvps = new ObservableCollection<GridViewPage>();
         public MainPage()
         {
             this.InitializeComponent();
+            init();
+        }
 
-            var strs = new List<string>();
-            var strs2 = new List<string>();
+        public async Task<int> init()
+        {
+            // Simulate some processing.
+            await Task.Delay(1000);
+
+            var strs = new ObservableCollection<string>();
+            var strs2 = new ObservableCollection<string>();
             for (int i = 0; i < 20; i++)
             {
                 strs.Add("" + i);
@@ -27,6 +36,8 @@ namespace FlipViewTest
             var gvp2 = new GridViewPage(strs2);
             gvps.Add(gvp);
             gvps.Add(gvp2);
+
+            return 0;
         }
     }
 }
